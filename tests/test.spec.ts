@@ -1,16 +1,9 @@
 import { test, expect } from '@playwright/test';
 
 test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
-
-  await expect(
-    page.getByText(
-      'Playwright enables reliable end-to-end testing for modern web apps.'
-    )
-  ).toBeVisible();
-  await page.waitForTimeout(2000);
+  await page.goto('https://ffex2-ui-dev-api.azurewebsites.net/en');
+  await page.getByRole('textbox', { name: 'Email' }).fill('qa_test_cs');
+  await page.getByRole('textbox', { name: 'Password' }).fill('qa_test_cs');
+  await page.getByRole('button', { name: 'Sign in' }).click();
   await page.close();
 });
